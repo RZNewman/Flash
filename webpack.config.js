@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
     module: {
       rules: [
         {
