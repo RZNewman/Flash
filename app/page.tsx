@@ -1,31 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Papa from "papaparse";
 
 export default function Home() {
   const [abilityDB, setAbilityCSV] = useState<Record<string, any>[]>([]);
 
-  fetch("./Abil.csv")
-    .then((response) => response.text())
-    .then((responseText) => {
-      const csv = Papa.parse<Record<string, any>>(responseText, {
-        header: true,
+  useEffect(() => {
+    fetch("./Abil.csv")
+      .then((response) => response.text())
+      .then((responseText) => {
+        const csv = Papa.parse<Record<string, any>>(responseText, {
+          header: true,
+        });
+        const parsedData = csv?.data;
+        // const rows = Object.keys(parsedData[0]);
+
+        // const columns = Object.values(parsedData[0]);
+
+        // const abilities:Record<string,any>[] = [];
+        // rows.forEach((e, i) => {
+        //   const abil = {}
+
+        //   abilities.push(([e], columns[i]));
+        // });
+        console.log(parsedData);
+        setAbilityCSV(parsedData);
       });
-      const parsedData = csv?.data;
-      // const rows = Object.keys(parsedData[0]);
-
-      // const columns = Object.values(parsedData[0]);
-
-      // const abilities:Record<string,any>[] = [];
-      // rows.forEach((e, i) => {
-      //   const abil = {}
-
-      //   abilities.push(([e], columns[i]));
-      // });
-      console.log(parsedData);
-      setAbilityCSV(parsedData);
-    });
+  }, []);
 
   return (
     <main>
