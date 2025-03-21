@@ -1,3 +1,4 @@
+import { Container } from "@mantine/core";
 import { Ability } from "./page";
 
 type CardProps = {
@@ -7,12 +8,12 @@ type CardProps = {
 export default function Card(props: CardProps) {
   const { abil } = props;
   return (
-    <div>
-      <div>
+    <Container>
+      <Container>
         {abil["Name"]}:{abil["List"]}/{abil["Sub list"]}
-      </div>
+      </Container>
       {abil["Action Cost"]}
       {abil.Notes}
-    </div>
+    </Container>
   );
 }
