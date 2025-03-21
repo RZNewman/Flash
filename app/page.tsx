@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Card from "./Card";
-import { Container, createTheme, MantineProvider, Text } from "@mantine/core";
+import { Container, Text } from "@mantine/core";
 
 // const Name = "Name"
 // const List = "List"
@@ -88,18 +88,12 @@ export default function Home() {
       });
   }, []);
 
-  const theme = createTheme({
-    primaryColor: "violet",
-  });
-
   return (
-    <MantineProvider forceColorScheme="dark" theme={theme}>
-      <Container>
-        <Text>Flash Ability List</Text>
-        {abilityDB.map((e, i) => (
-          <Card abil={e}></Card>
-        ))}
-      </Container>
-    </MantineProvider>
+    <Container>
+      <Text>Flash Ability List</Text>
+      {abilityDB.map((e, i) => (
+        <Card abil={e}></Card>
+      ))}
+    </Container>
   );
 }
