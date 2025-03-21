@@ -8,19 +8,18 @@ type CardProps = {
 export default function Card(props: CardProps) {
   const { abil } = props;
   return (
-    <Container p="md" bd="5px solid grey">
+    <Container m="md" bd="5px solid grey">
       <Title order={3} style={{ borderBottom: "3px solid grey" }}>
         {abil["Name"]}
       </Title>
       <Text fs="italic" size="s" pl="sm">
         {abil["Sub list"]}
       </Text>
-      <Container>
-        <Text span fw={700} pr="sm">
-          {abil["Action Cost"]}:
-        </Text>
-        <Text span>{abil.Notes}</Text>
-      </Container>
+
+      <Text span fw={700} pr="sm">
+        {abil["Action Cost"]}:
+      </Text>
+      <Text span>{abil.Notes}</Text>
     </Container>
   );
 }
