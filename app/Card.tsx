@@ -1,4 +1,4 @@
-import { Container } from "@mantine/core";
+import { Container, Title, Text } from "@mantine/core";
 import { Ability } from "./page";
 
 type CardProps = {
@@ -8,12 +8,15 @@ type CardProps = {
 export default function Card(props: CardProps) {
   const { abil } = props;
   return (
-    <Container>
+    <Container p="20px">
+      <Title order={3}> {abil["Name"]}</Title>
+      <Text fs="italic" size="s">
+        {abil["Sub list"]}
+      </Text>
       <Container>
-        {abil["Name"]}:{abil["List"]}/{abil["Sub list"]}
+        <Text inline={true}>{abil["Action Cost"]}:</Text>
+        <Text inline={true}>{abil.Notes}</Text>
       </Container>
-      {abil["Action Cost"]}
-      {abil.Notes}
     </Container>
   );
 }

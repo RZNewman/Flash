@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Card from "./Card";
-import { Container, Text } from "@mantine/core";
+import { Container, Text, Title } from "@mantine/core";
 
 // const Name = "Name"
 // const List = "List"
@@ -90,7 +90,7 @@ export default function Home() {
 
   return (
     <Container>
-      <Text>Flash Ability List</Text>
+      <Title order={1}>Flash Ability List</Title>
       {abilityDB.map((e, i) => (
         <Card abil={e}></Card>
       ))}
