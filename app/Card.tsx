@@ -16,9 +16,11 @@ export default function Card(props: CardProps) {
         {abil["Sub list"]}
       </Text>
 
-      <Text span fw={700} pr="sm">
-        {abil["Action Cost"]}:
-      </Text>
+      {abil["Action Cost"] && (
+        <Text span fw={700} pr="sm">
+          {abil["Action Cost"]}:
+        </Text>
+      )}
       <Text span>{abil.Notes}</Text>
     </Container>
   );
