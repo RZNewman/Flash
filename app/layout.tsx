@@ -18,10 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <MantineProvider forceColorScheme="dark" theme={theme}>
+    <MantineProvider forceColorScheme="dark" theme={theme}>
+      <html lang="en">
         <body>{children}</body>
-      </MantineProvider>
-    </html>
+      </html>
+    </MantineProvider>
   );
 }

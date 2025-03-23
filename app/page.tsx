@@ -92,7 +92,7 @@ export default function Home() {
     <Container>
       <Title order={1}>Flash Ability List</Title>
       {abilityDB.map((e, i) => (
-        <Card abil={e}></Card>
+        <Card abil={e} id={i}></Card>
       ))}
     </Container>
   );
