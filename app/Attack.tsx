@@ -1,26 +1,21 @@
 import { Container, Title, Text } from "@mantine/core";
 import { Ability } from "./page";
-import { HitText } from "./Card";
+import { HitText, XText } from "./Card";
 
-type AttackProps = {
+export type AttackProps = {
   hit: string;
-  range: string;
   damage: string;
-  damageType: string;
+  damageType?: string;
 };
 
-function getRange(range: string) {
-  if ((range = "W")) return range;
-  return range + "ft";
-}
-
 export default function Attack(props: AttackProps) {
-  const { hit, range, damage, damageType } = props;
+  const { hit, damage, damageType } = props;
   if (!hit) return;
 
   return (
     <Container
       m="md"
+      mt="xs"
       p={0}
       bd="3px solid grey"
       bg="gray.4"
@@ -30,7 +25,7 @@ export default function Attack(props: AttackProps) {
         Hit: {hit}
       </Text>
       <Text span size="md">
-        Range: {getRange(range)} {damage && " - Damage: "}
+        {damage && "Damage: "}
         {damage && HitText(damage)}
         {damageType && " " + damageType}
       </Text>
