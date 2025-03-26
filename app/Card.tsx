@@ -171,7 +171,7 @@ export default function Card(props: CardProps) {
         attackCount={abil.SummonAtkNum}
         attack={{ damage: abil.SummonDmg, hit: abil["Hit type"] }}
       ></Summon>
-      {extrasArray.length > 0 && (
+      {/* {extrasArray.length > 0 && (
         <Grid>
           {extrasArray.map((pair) => {
             return (
@@ -186,7 +186,7 @@ export default function Card(props: CardProps) {
             );
           })}
         </Grid>
-      )}
+      )} */}
     </Container>
   );
 }
