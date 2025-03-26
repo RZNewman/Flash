@@ -175,7 +175,7 @@ export default function Card(props: CardProps) {
         <Grid p="md">
           {extrasArray.map((pair) => {
             return (
-              <Grid.Col span={4}>
+              <Grid.Col span={6}>
                 <Text span tt="capitalize" fw={700} mr="xs">
                   {pair[0]}:
                 </Text>
