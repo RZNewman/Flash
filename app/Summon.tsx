@@ -19,7 +19,7 @@ export default function Summon(props: SummonProps) {
       m="md"
       p={0}
       bd="3px solid grey"
-      bg="gray.6"
+      bg="gray.7"
       style={{ borderRadius: "10px" }}
     >
       {health && (

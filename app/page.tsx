@@ -3,7 +3,8 @@
 import { useEffect, useState } from "react";
 import Papa from "papaparse";
 import Card from "./Card";
-import { Container, Text, Title } from "@mantine/core";
+import { Container, List, Select, Text, Title } from "@mantine/core";
+import AbilityList from "./AbilityList";
 
 // const Name = "Name"
 // const List = "List"
@@ -64,8 +65,13 @@ function isValid(abil: Ability) {
   return abil.Name && (abil.Notes || abil["Action Cost"]);
 }
 
+type AbilCSVData = {
+  structure: Record<string, string[]>;
+  lists: Record<string, Ability[]>;
+};
+
 export default function Home() {
-  const [abilityDB, setAbilityCSV] = useState<Ability[]>([]);
+  const [data, setData] = useState<AbilCSVData>({ structure: {}, lists: {} });
 
   useEffect(() => {
     fetch("./Abil.csv")
@@ -83,17 +89,35 @@ export default function Home() {
           });
         });
         abilities = abilities.filter(isValid);
+
+        const structure: Record<string, string[]> = {};
+        const lists: Record<string, Ability[]> = {};
+
+        abilities.forEach((abil) => {
+          const SuperList = abil.List;
+          const SubList = abil["Sub list"];
+          if (SuperList in structure) {
+            if (!structure[SuperList].find((l) => l == SubList)) {
+              structure[SuperList].push(SubList);
+            }
+          } else {
+            structure[SuperList] = [SubList];
+          }
+
+          if (SubList in lists) {
+            lists[SubList].push(abil);
+          } else {
+            lists[SubList] = [abil];
+          }
+        });
+
         console.log(abilities);
-        setAbilityCSV(abilities);
+        console.log(structure);
+        setData({ structure, lists });
       });
   }, []);
 
   return (
-    <Container>
-      <Title order={1}>Flash Ability List</Title>
-      {abilityDB.map((e, i) => (
-        <Card abil={e} id={i}></Card>
-      ))}
-    </Container>
+    <AbilityList lists={data.lists} structure={data.structure}></AbilityList>
   );
 }
