@@ -158,20 +158,20 @@ export default function Card(props: CardProps) {
         )}
         {HitText(abil.Notes)}
       </Container>
-      {/* {!abil.SummonDmg && (
+      {!abil.SummonDmg && (
         <Attack
           hit={abil["Hit type"]}
           damage={abil.Damage}
           damageType={abil["Damage type"]}
         ></Attack>
-      )} */}
-      {/* <Summon
+      )}
+      <Summon
         health={abil.SummonHP}
         move={abil.SummonMove}
         attackCount={abil.SummonAtkNum}
         attack={{ damage: abil.SummonDmg, hit: abil["Hit type"] }}
-      ></Summon> */}
-      {/* {extrasArray.length > 0 && (
+      ></Summon>
+      {extrasArray.length > 0 && (
         <Grid>
           {extrasArray.map((pair) => {
             return (
@@ -186,7 +186,7 @@ export default function Card(props: CardProps) {
             );
           })}
         </Grid>
-      )} */}
+      )}
     </Container>
   );
 }
