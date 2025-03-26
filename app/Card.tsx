@@ -165,12 +165,12 @@ export default function Card(props: CardProps) {
           damageType={abil["Damage type"]}
         ></Attack>
       )}
-      <Summon
+      {/* <Summon
         health={abil.SummonHP}
         move={abil.SummonMove}
         attackCount={abil.SummonAtkNum}
         attack={{ damage: abil.SummonDmg, hit: abil["Hit type"] }}
-      ></Summon>
+      ></Summon> */}
       {/* {extrasArray.length > 0 && (
         <Grid>
           {extrasArray.map((pair) => {
