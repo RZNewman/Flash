@@ -172,7 +172,7 @@ export default function Card(props: CardProps) {
         attack={{ damage: abil.SummonDmg, hit: abil["Hit type"] }}
       ></Summon>
       {extrasArray.length > 0 && (
-        <Grid>
+        <Grid p="md">
           {extrasArray.map((pair) => {
             return (
               <Grid.Col span={4}>

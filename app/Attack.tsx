@@ -18,7 +18,7 @@ export default function Attack(props: AttackProps) {
       mt="xs"
       p={0}
       bd="3px solid grey"
-      bg="gray.4"
+      bg="gray.8"
       style={{ borderRadius: "10px" }}
     >
       <Text span size="lg" m="lg">
