@@ -111,6 +111,8 @@ export default function Card(props: CardProps) {
   return (
     <Container
       m="md"
+      ml={0}
+      mr={0}
       p={0}
       bd="5px solid grey"
       pb="xs"
