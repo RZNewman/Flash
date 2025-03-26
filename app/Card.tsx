@@ -158,13 +158,13 @@ export default function Card(props: CardProps) {
         )}
         {HitText(abil.Notes)}
       </Container>
-      {!abil.SummonDmg && (
+      {/* {!abil.SummonDmg && (
         <Attack
           hit={abil["Hit type"]}
           damage={abil.Damage}
           damageType={abil["Damage type"]}
         ></Attack>
-      )}
+      )} */}
       {/* <Summon
         health={abil.SummonHP}
         move={abil.SummonMove}
@@ -175,14 +175,14 @@ export default function Card(props: CardProps) {
         <Grid>
           {extrasArray.map((pair) => {
             return (
-              <Container mr="sm">
+              <Grid.Col span={4}>
                 <Text span tt="capitalize" fw={700} mr="xs">
                   {pair[0]}:
                 </Text>
                 <Text span tt="capitalize">
                   {HitText(pair[1])}
                 </Text>
-              </Container>
+              </Grid.Col>
             );
           })}
         </Grid>
