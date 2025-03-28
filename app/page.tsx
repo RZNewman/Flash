@@ -118,12 +118,28 @@ export default function Home() {
         });
 
         const classes = structure["Class"];
-
+        //Some lists are class specific; remove them
         classes.forEach((c) => {
           if (structure[c]) {
             classLists.push(structure[c][0]);
             delete structure[c];
           }
+        });
+
+        const specs = structure["Spec"];
+        //Some lists are incomplete; remove them
+        specs.forEach((spec) => {
+          const subSpecs = structure[spec];
+          const subSpecsCopy = Array.from(subSpecs);
+          subSpecsCopy.forEach((subSpec) => {
+            if (lists[subSpec].length < 6) {
+              subSpecs.splice(
+                subSpecs.findIndex((s) => s == subSpec),
+                1
+              );
+            }
+          });
+          structure[spec] = subSpecs;
         });
 
         console.log(abilities);
