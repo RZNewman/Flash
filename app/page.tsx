@@ -65,13 +65,18 @@ function isValid(abil: Ability) {
   return abil.Name && (abil.Notes || abil["Action Cost"]);
 }
 
-type AbilCSVData = {
+export type AbilCSVData = {
   structure: Record<string, string[]>;
   lists: Record<string, Ability[]>;
+  classLists: string[];
 };
 
 export default function Home() {
-  const [data, setData] = useState<AbilCSVData>({ structure: {}, lists: {} });
+  const [data, setData] = useState<AbilCSVData>({
+    structure: {},
+    lists: {},
+    classLists: [],
+  });
 
   useEffect(() => {
     fetch("./Abil.csv")
@@ -92,6 +97,7 @@ export default function Home() {
 
         const structure: Record<string, string[]> = {};
         const lists: Record<string, Ability[]> = {};
+        const classLists: string[] = [];
 
         abilities.forEach((abil) => {
           const SuperList = abil.List;
@@ -111,13 +117,20 @@ export default function Home() {
           }
         });
 
+        const classes = structure["Class"];
+
+        classes.forEach((c) => {
+          if (structure[c]) {
+            classLists.push(structure[c][0]);
+            delete structure[c];
+          }
+        });
+
         console.log(abilities);
         console.log(structure);
-        setData({ structure, lists });
+        setData({ structure, lists, classLists });
       });
   }, []);
 
-  return (
-    <AbilityList lists={data.lists} structure={data.structure}></AbilityList>
-  );
+  return <AbilityList {...data}></AbilityList>;
 }

@@ -1,15 +1,10 @@
 import { Container, Title, Text, Select } from "@mantine/core";
-import { Ability } from "./page";
+import { AbilCSVData, Ability } from "./page";
 import Card, { HitText, XText } from "./Card";
 import { useEffect, useState } from "react";
 
-export type AbilityListProps = {
-  structure: Record<string, string[]>;
-  lists: Record<string, Ability[]>;
-};
-
-export default function AbilityList(props: AbilityListProps) {
-  const { structure, lists } = props;
+export default function AbilityList(props: AbilCSVData) {
+  const { structure, lists, classLists } = props;
   if (Object.entries(structure).length == 0) return;
 
   const SuperLists = Object.keys(structure);
@@ -48,8 +43,16 @@ export default function AbilityList(props: AbilityListProps) {
           }}
         />
       )}
-      {displayAbilities.map((e, i) => (
-        <Card abil={e} id={i}></Card>
+      {displayAbilities.map((a, i) => (
+        <Card
+          abil={a}
+          id={i}
+          abilList={
+            classLists.findIndex((c) => c == a.Name) >= 0
+              ? lists[a.Name]
+              : undefined
+          }
+        ></Card>
       ))}
     </Container>
   );

@@ -1,4 +1,11 @@
-import { Container, Title, Text, TextProps, Grid } from "@mantine/core";
+import {
+  Container,
+  Title,
+  Text,
+  TextProps,
+  Grid,
+  Accordion,
+} from "@mantine/core";
 import { Ability } from "./page";
 import Attack from "./Attack";
 import Summon from "./Summon";
@@ -6,6 +13,7 @@ import Summon from "./Summon";
 type CardProps = {
   abil: Ability;
   id: number;
+  abilList?: Ability[];
 };
 
 function translateActionCost(a: string) {
@@ -88,12 +96,13 @@ function tagText(text: string, patterns: RegExp[], propsList: TextProps[]) {
 }
 
 function getRange(range: string) {
+  if (!range) return "";
   if (range == "W" || range == "self") return range;
   return range + "ft";
 }
 
 export default function Card(props: CardProps) {
-  const { abil, id } = props;
+  const { abil, id, abilList } = props;
   const extras = {
     cost: abil["Point cost"],
     duration: abil.Duration,
@@ -103,7 +112,7 @@ export default function Card(props: CardProps) {
     size: abil.Length,
     width: abil["Width Line"],
     targets: abil.Targets,
-    range: abil.Range,
+    range: getRange(abil.Range),
   };
 
   const extrasArray = Object.entries(extras).filter((pair) => pair[1]);
@@ -111,8 +120,6 @@ export default function Card(props: CardProps) {
   return (
     <Container
       m="md"
-      ml={0}
-      mr={0}
       p={0}
       bd="5px solid grey"
       pb="xs"
@@ -178,16 +185,26 @@ export default function Card(props: CardProps) {
           {extrasArray.map((pair) => {
             return (
               <Grid.Col span={6}>
-                <Text span tt="capitalize" fw={700} mr="xs">
+                <Text tt="capitalize" fw={700} mr="xs">
                   {pair[0]}:
                 </Text>
-                <Text span tt="capitalize">
-                  {HitText(pair[1])}
-                </Text>
+                <Text tt="capitalize">{HitText(pair[1])}</Text>
               </Grid.Col>
             );
           })}
         </Grid>
+      )}
+      {abilList && (
+        <Accordion>
+          <Accordion.Item key={0} value={abil.Name}>
+            <Accordion.Control>{abil.Name} List</Accordion.Control>
+            <Accordion.Panel>
+              {abilList.map((e, i) => (
+                <Card abil={e} id={i}></Card>
+              ))}
+            </Accordion.Panel>
+          </Accordion.Item>
+        </Accordion>
       )}
     </Container>
   );
