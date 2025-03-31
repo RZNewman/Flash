@@ -104,7 +104,9 @@ export const Levels: LevelReward[] = [
     AND: [
       { subClass: true },
       { abilities: 1 },
-      { AND: [{ attack: 1 }, { defense: 4 }, { defense: 1 }] },
+      { attack: 1 },
+      { defense: 4 },
+      { defense: 1 },
     ],
   },
   {

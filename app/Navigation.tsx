@@ -7,6 +7,7 @@ import StatusCard from "./Status";
 import { Rules } from "./RulesData";
 import RuleCard from "./Rule";
 import { Armors, Formulas, Skills } from "./CharacterData";
+import LevelUp from "./LevelUp";
 
 type Section =
   | "Abilities"
@@ -88,6 +89,7 @@ export default function Navigation(props: AbilCSVData) {
           ))}
         </Container>
       )}
+      {section == "Level ups" && <LevelUp></LevelUp>}
     </Container>
   );
 }
