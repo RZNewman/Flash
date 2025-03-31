@@ -17,7 +17,7 @@ export default function AbilityList(props: AbilCSVData) {
   }, [AbilityLists]);
 
   return (
-    <Container>
+    <Container p={0}>
       {SuperLists.length > 0 && (
         <Select
           placeholder="List Type"

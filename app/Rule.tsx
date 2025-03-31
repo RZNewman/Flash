@@ -16,7 +16,7 @@ export default function RuleCard(props: RuleProps) {
       key={props.key}
       p={0}
       bd="4px solid grey"
-      m="sm"
+      mt="sm"
       style={{ borderRadius: "10px" }}
     >
       <Container

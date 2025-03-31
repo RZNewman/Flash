@@ -16,7 +16,7 @@ export default function Navigation(props: AbilCSVData) {
   if (Object.entries(props.structure).length == 0) return;
 
   return (
-    <Container>
+    <Container p={0}>
       <Text span size="xl" fw={700} mr="lg">
         Flash
       </Text>
@@ -29,14 +29,14 @@ export default function Navigation(props: AbilCSVData) {
       />
       {section == "Abilities" && <AbilityList {...props}></AbilityList>}
       {section == "Statuses" && (
-        <Container>
+        <Container p={0}>
           {props.statuses.map((stat, ind) => (
             <StatusCard {...stat} key={ind}></StatusCard>
           ))}
         </Container>
       )}
       {section == "Rules" && (
-        <Container>
+        <Container p={0}>
           {Rules.map((stat, ind) => (
             <RuleCard {...stat} key={ind}></RuleCard>
           ))}
