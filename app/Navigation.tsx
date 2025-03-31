@@ -6,10 +6,26 @@ import AbilityList from "./AbilityList";
 import StatusCard from "./Status";
 import { Rules } from "./RulesData";
 import RuleCard from "./Rule";
+import { Armors, Formulas, Skills } from "./CharacterData";
 
-type Section = "Abilities" | "Statuses" | "Rules";
+type Section =
+  | "Abilities"
+  | "Statuses"
+  | "Rules"
+  | "Skills"
+  | "Formulas"
+  | "Armor"
+  | "Level ups";
 
-const Sections: Section[] = ["Abilities", "Statuses", "Rules"];
+const Sections: Section[] = [
+  "Abilities",
+  "Statuses",
+  "Rules",
+  "Skills",
+  "Armor",
+  "Level ups",
+  "Formulas",
+];
 
 export default function Navigation(props: AbilCSVData) {
   const [section, setSection] = useState<Section>("Rules");
@@ -39,6 +55,36 @@ export default function Navigation(props: AbilCSVData) {
         <Container p={0}>
           {Rules.map((stat, ind) => (
             <RuleCard {...stat} key={ind}></RuleCard>
+          ))}
+        </Container>
+      )}
+      {section == "Skills" && (
+        <Container p={0}>
+          {Skills.map((skill, ind) => (
+            <Text key={ind}>{skill}</Text>
+          ))}
+        </Container>
+      )}
+      {section == "Formulas" && (
+        <Container p={0}>
+          {Formulas.map((f, ind) => (
+            <Text key={ind}>{f}</Text>
+          ))}
+        </Container>
+      )}
+      {section == "Armor" && (
+        <Container p={0}>
+          {Armors.map((armor, ind) => (
+            <Container key={ind} bd="2px solid grey" mt="md">
+              <Text size="lg" fw={700}>
+                {armor.name}
+              </Text>
+              <Text>Movement: {armor.move}</Text>
+              {armor.bonusMove && (
+                <Text>Fast/Slow Movement: {armor.bonusMove}</Text>
+              )}
+              {armor.defense && <Text>Defense: {armor.defense}</Text>}
+            </Container>
           ))}
         </Container>
       )}

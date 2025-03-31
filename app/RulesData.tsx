@@ -50,6 +50,10 @@ export const Rules: RuleData[] = [
     rule: "When a unit is engaged in melee range of two enemy units on opposite sides, hits against it are upgraded 1 tier",
   },
   {
+    name: "Power",
+    rule: "Your power for abilities. Represented by an X in descriptions. X/2 always rounds down. dX is the appropriate dis (1=d4, 2=d6, etc...)",
+  },
+  {
     name: "Difficult Terrain",
     rule: "Difficult terrain takes twice as much movement to leave",
   },
