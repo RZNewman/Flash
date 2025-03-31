@@ -18,7 +18,6 @@ export default function AbilityList(props: AbilCSVData) {
 
   return (
     <Container>
-      <Title order={1}>Flash Ability List</Title>
       {SuperLists.length > 0 && (
         <Select
           placeholder="List Type"

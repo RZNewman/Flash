@@ -5,6 +5,7 @@ import Papa from "papaparse";
 import Card from "./Card";
 import { Container, List, Select, Text, Title } from "@mantine/core";
 import AbilityList from "./AbilityList";
+import Navigation from "./Navigation";
 
 // const Name = "Name"
 // const List = "List"
@@ -61,6 +62,12 @@ export type AbilKey =
 
 export type Ability = Record<AbilKey, string>;
 
+export type Status = {
+  Name: string;
+  Scales: string;
+  Effects: string;
+};
+
 function isValid(abil: Ability) {
   return abil.Name && (abil.Notes || abil["Action Cost"]);
 }
@@ -69,6 +76,7 @@ export type AbilCSVData = {
   structure: Record<string, string[]>;
   lists: Record<string, Ability[]>;
   classLists: string[];
+  statuses: Status[];
 };
 
 export default function Home() {
@@ -76,6 +84,7 @@ export default function Home() {
     structure: {},
     lists: {},
     classLists: [],
+    statuses: [],
   });
 
   useEffect(() => {
@@ -144,9 +153,20 @@ export default function Home() {
 
         console.log(abilities);
         console.log(structure);
-        setData({ structure, lists, classLists });
+
+        fetch("./Status.csv")
+          .then((response) => response.text())
+          .then((responseText) => {
+            const csv = Papa.parse<Status>(responseText, {
+              header: true,
+            });
+            var statuses = csv?.data;
+
+            console.log(statuses);
+            setData({ structure, lists, classLists, statuses });
+          });
       });
   }, []);
 
-  return <AbilityList {...data}></AbilityList>;
+  return <Navigation {...data}></Navigation>;
 }
