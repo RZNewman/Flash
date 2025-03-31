@@ -16,6 +16,26 @@ export const Formulas = [
   "Health = 5 + 5*Lvl + 5*HP + 2*Lvl*HP",
   "Concentration Threshold = 10 + 2*HP",
 ];
+
+export type Spec = "Beast" | "Warrior" | "Elementalist" | "Scholar";
+
+export const ClassRestrictions: Record<string, Spec[]> = {
+  Sorcerer: ["Scholar", "Elementalist"],
+  Cleric: ["Scholar", "Elementalist"],
+  Wizard: ["Scholar", "Elementalist"],
+  Warlock: ["Scholar", "Elementalist"],
+  Bard: ["Scholar", "Elementalist"],
+  Druid: ["Elementalist", "Beast"],
+  Paladin: ["Scholar", "Warrior"],
+  Magitech: ["Elementalist", "Warrior"],
+  Rogue: ["Scholar", "Warrior"],
+  Hexblade: ["Beast", "Warrior"],
+  Monk: ["Beast", "Warrior"],
+  Ranger: ["Beast", "Warrior"],
+  Primordial: ["Beast", "Warrior"],
+  Fighter: ["Beast", "Warrior"],
+};
+
 export type Armor = {
   name: string;
   move: number;
