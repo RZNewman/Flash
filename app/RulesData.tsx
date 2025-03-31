@@ -7,9 +7,9 @@ export const Rules: RuleData[] = [
   {
     name: "Combat turn order",
     rule: `Each side takes the following turns, with the players usually acting first.
-    (Declare Colossal)
-    Fast
-    Slow
+    (Declare Colossal),
+    Fast,
+    Slow,
     (Resolve Colossal)
     `,
   },

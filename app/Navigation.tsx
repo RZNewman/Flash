@@ -12,7 +12,7 @@ type Section = "Abilities" | "Statuses" | "Rules";
 const Sections: Section[] = ["Abilities", "Statuses", "Rules"];
 
 export default function Navigation(props: AbilCSVData) {
-  const [section, setSection] = useState<Section>("Abilities");
+  const [section, setSection] = useState<Section>("Rules");
   if (Object.entries(props.structure).length == 0) return;
 
   return (
