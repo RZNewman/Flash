@@ -1,15 +1,15 @@
 Name,Scales,Effects
 Shocked,,Cannot use reactions
-Grappeled,,Cannot move
+Grappled,,Cannot move
 Taunted,Y,Attack bane on other targets
-Dazed,,Cannot take a fast turn. Only recieve 1 action for a slow turn
+Dazed,,Cannot take a fast turn. Only receive 1 action for a slow turn
 Ensnared,,Cannot move
-Incapactitated,,Cannot use an attack action
+Incapacitated,,Cannot use an attack action
 Stunned,,Cannot act
 Frightened,,Cannot move toward source
-Feared,Y,Frightened + attack bane
+Feared,Y,Frightened + attack bane vs target
 Blinded,Y,Attack bane
-Poisoned,Y,Hit downgrade
+Poisoned,Y,Take increased damage
 Prone,,"Hit upgrade for melee, hit downgrade for range. Cannot Threaten"
 Restrained,Y,Defense Bane
 Paralyzed,Y,Stunned + Defense Bane

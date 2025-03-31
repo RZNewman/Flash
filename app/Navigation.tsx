@@ -4,10 +4,12 @@ import Card, { HitText, XText } from "./Card";
 import { useEffect, useState } from "react";
 import AbilityList from "./AbilityList";
 import StatusCard from "./Status";
+import { Rules } from "./RulesData";
+import RuleCard from "./Rule";
 
-type Section = "Abilities" | "Statuses";
+type Section = "Abilities" | "Statuses" | "Rules";
 
-const Sections: Section[] = ["Abilities", "Statuses"];
+const Sections: Section[] = ["Abilities", "Statuses", "Rules"];
 
 export default function Navigation(props: AbilCSVData) {
   const [section, setSection] = useState<Section>("Abilities");
@@ -30,6 +32,13 @@ export default function Navigation(props: AbilCSVData) {
         <Container>
           {props.statuses.map((stat, ind) => (
             <StatusCard {...stat} key={ind}></StatusCard>
+          ))}
+        </Container>
+      )}
+      {section == "Rules" && (
+        <Container>
+          {Rules.map((stat, ind) => (
+            <RuleCard {...stat} key={ind}></RuleCard>
           ))}
         </Container>
       )}
