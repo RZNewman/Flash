@@ -15,11 +15,11 @@ export const Rules: RuleData[] = [
   },
   {
     name: "Fast turns",
-    rule: "Fast turns allow 1 action, or fast actions. When taking a fast turn, you may move up to you fast movement",
+    rule: "Fast turns allow 1 action, or fast actions. When taking a fast turn where you don't use the move action, you may move up to you fast movement",
   },
   {
     name: "Slow turns",
-    rule: "Slow turns allow 2 actions, or slow actions. When taking a slow action, you may move up to you slow movement",
+    rule: "Slow turns allow 2 actions, or slow actions. When taking a slow turn where you don't use the move action, you may move up to you slow movement",
   },
   {
     name: "Instant actions",
