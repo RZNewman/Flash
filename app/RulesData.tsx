@@ -6,12 +6,7 @@ export type RuleData = {
 export const Rules: RuleData[] = [
   {
     name: "Combat turn order",
-    rule: `Each side takes the following turns, with the players usually acting first.
-    (Declare Colossal),
-    Fast,
-    Slow,
-    (Resolve Colossal)
-    `,
+    rule: `Each side takes a fast turn, then each side takes a slow turn, with the players usually acting first. Each character can only act on either the slow or fast turn in a round`,
   },
   {
     name: "Fast turns",
@@ -27,7 +22,7 @@ export const Rules: RuleData[] = [
   },
   {
     name: "Colossal actions",
-    rule: "Colossal actions must be declared at the start of a round, and resolve at the end if they are not interrupted",
+    rule: "Colossal actions must be declared at the start of a round before any fast turn, and resolve at the end after all slow turns if they are not interrupted. You cannot take a slow or fast turn while using a colossal action",
   },
   {
     name: "Defenses",
