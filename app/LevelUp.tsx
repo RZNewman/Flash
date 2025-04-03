@@ -48,8 +48,18 @@ function LevelOptions(level: LevelReward) {
           Scholar
         </Text>
       )}
-      {"class" in level && <Text>Pick a Class</Text>}
-      {"subClass" in level && <Text>Pick a Sub Class</Text>}
+      {"class" in level && (
+        <Text>
+          {level.class == 1 && "Pick a Class. "} Learn the Rank {level.class}{" "}
+          Class ability
+        </Text>
+      )}
+      {"subClass" in level && (
+        <Text>
+          {level.subClass == 1 && "Pick a SubClass. "} Learn the Rank{" "}
+          {level.subClass} SubClass ability
+        </Text>
+      )}
       {"power" in level && (
         <Text>
           Your power is now {Math.max(level.power, 1)}. You can learn new

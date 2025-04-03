@@ -74,8 +74,8 @@ export type LevelReward =
     }
   | { style: true }
   | { styleType: true }
-  | { class: true }
-  | { subClass: true }
+  | { class: number }
+  | { subClass: number }
   | { power: number }
   | { OR: LevelReward[] }
   | { AND: LevelReward[] };
@@ -100,7 +100,7 @@ export const Levels: LevelReward[] = [
   {
     AND: [
       { power: 1 },
-      { class: true },
+      { class: 1 },
       { abilities: 1 },
       { defense: 5 },
       { defense: 2 },
@@ -116,13 +116,14 @@ export const Levels: LevelReward[] = [
   {
     AND: [
       { power: 2 },
+      { class: 2 },
       { abilities: 1 },
       { OR: [{ hp: 1 }, { skill: 4 }, { skillDistribution: 6 }] },
     ],
   },
   {
     AND: [
-      { subClass: true },
+      { subClass: 1 },
       { abilities: 1 },
       { attack: 1 },
       { defense: 4 },
@@ -132,6 +133,7 @@ export const Levels: LevelReward[] = [
   {
     AND: [
       { power: 3 },
+      { class: 3 },
       { abilities: 1 },
       { OR: [{ attack: 1 }, { skillDistribution: 8 }] },
     ],
@@ -139,12 +141,14 @@ export const Levels: LevelReward[] = [
   {
     AND: [
       { abilities: 1 },
+      { subClass: 2 },
       { OR: [{ attack: 1 }, { hp: 1 }, { style: true }] },
     ],
   },
   {
     AND: [
       { power: 4 },
+      { subClass: 3 },
       { abilities: 1 },
       {
         OR: [
