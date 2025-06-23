@@ -46,7 +46,7 @@ export const Rules: RuleData[] = [
   },
   {
     name: "Power",
-    rule: "Your power for abilities. Represented by an X in descriptions. X/2 always rounds down. dX is the appropriate dis (1=d4, 2=d6, etc...)",
+    rule: "Your power for abilities. Represented by an X in descriptions. X/2 always rounds down. dX is the appropriate dice (1=d4, 2=d6, etc...)",
   },
   {
     name: "Difficult Terrain",
